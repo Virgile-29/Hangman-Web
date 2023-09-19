@@ -6,6 +6,8 @@ startButton.onclick = ((e) => {
     init()
 })
 
+const game = new Game()
+
 const words = [
         "pendu",
         "jouer",
@@ -17,18 +19,8 @@ function init() {
     // init game
     const rand = Math.floor(Math.random() * words.length)
     const WORD = words[rand]
-    let lives = 7    
-
-    const game = new Game(lives, WORD)
-    while(game.isActive) {
-        if(game.lives === 0) {
-            game.isActive = false
-        }
-
-
-
-    }
-    console.log(game)
+    let lives = 7
+    game = new Game(lives, WORD)
 }
 
 function initHtml() {
