@@ -1,0 +1,19 @@
+:root {
+    --validation-color: #29bf12;
+    --error-color: #f21b3f;
+}
+
+
+.button {
+    padding: 0.5rem 2rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: var(--validation-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: rotate(1080deg);
+    transition: all 0.3s;
+}
