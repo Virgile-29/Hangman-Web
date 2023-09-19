@@ -1,0 +1,32 @@
+@keyframes rotateIn {
+    from {
+        scale: 0;
+        transform: rotate(0deg);
+    }
+
+    to {
+        scale: 1;
+        transform: rotate(1080deg);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-300rem);
+    }
+
+    75% {
+        transform: translateX(50rem);
+    }
+
+    100% {
+        transform: translateX(0rem);
+    }
+}
+
+.animation-1 {
+    animation-duration: 1s;
+    animation-name: rotateIn;
+    animation-timing-function: ease-in-out;
+}
+

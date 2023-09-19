@@ -9,11 +9,11 @@ startButton.onclick = ((e) => {
 const game = new Game()
 
 const words = [
-        "pendu",
-        "jouer",
-        "perdu",
-        "gagner"
-    ]
+    "pendu",
+    "jouer",
+    "perdu",
+    "gagner"
+]
 
 function init() {
     // init game

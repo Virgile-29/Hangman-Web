@@ -11,18 +11,20 @@
 		<div class="app-container">
 			<h1>HANGMAN</h1>
 
-			<div class="img-container">
+			<div class="start-container">
 				<img
 					src="./assets/imgs/James_Franco_First_Time.jpg"
 					alt="Image de James Franco disant 'First Time'"
+					class="img-first-time"
 				/>
+				<button class="button" id="start">Commencer à jouer 🔄</button>
 			</div>
 
 			<div class="game-container">
-				<button class="button" id="start">Commencer à jouer 🔄</button>
-
-				<button class="button">❔ Guess ❔</button>
-				</div>
+				<div class="letter-container"></div>
+				<input type="text" id="input" />
+				<p class="user-feedback"></p>
+				<button class="button" id="guess">❔ Guess ❔</button>
 			</div>
 		</div>
 		<script type="module" src="./js/app.js"></script>
