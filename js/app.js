@@ -1,7 +1,10 @@
+import { launchGame, validateInput} from "./views.js"
 import { getWord } from "./words.js"
 
+
 const startButton = document.getElementById("start")
-const guessButton = document.getElementById("guessButton")
+const guessButton = document.getElementById("guess")
+const letterContainer = document.querySelector('.letter-container')
 
 const state = {
     lives: null,
@@ -9,20 +12,22 @@ const state = {
     guessedWord: null
 }
 
-startButton.onclick = ((e) => {
+startButton.addEventListener("click", ((e) => {
+    launchGame()
     init()
-})
+}))
 
-guessButton.onclick = ((e) => {
+guessButton.addEventListener("click", ((e) => {
     processAnswer()
     updateHTML()
-})
+}))
 
 /**
  * Process the input from the user and check if game is over
  */
 function processAnswer() {
     const guessInput = document.getElementById("guessInput").value
+    validateInput(guessInput)
 
     // Switch to check if input is a character or a string
     switch (guessInput.length) {
@@ -53,8 +58,16 @@ function processAnswer() {
 
     let wordIsFound = isWordFound(state.word, state.guessedWord)
 
+    //TODO: Fait ton boulot sale dev front 
     if (wordIsFound) {
         console.log("Congratz ! The word has been found ! 🧑‍🦰")
+    }
+
+    //TODO: Fait ton boulot sale dev front 
+    if (state.lives === 0) {
+        // Reset state ? Disable button ?
+
+        console.log("YOU LOOSE")
     }
 }
 
@@ -83,19 +96,35 @@ async function init() {
     // init game
     const WORD = await getWord()
 
-    const lives = 7
-    state.lives = lives
+    state.lives = 7
     state.word = WORD[0].name
     state.guessedWord = replaceLettersByUnderscore(WORD[0].name)
+    console.log("State : ",state)
+     for (const element of state.guessedWord) {
+        const letter = document.createElement('p')
+        letter.innerHTML = element
+        letter.classList.add('letter')
+        letterContainer.appendChild(letter)
+    }
     updateHTML()
-}
+}   
 
 /**
  * Update html view
  */
 function updateHTML() {
-    document.getElementById("wordToGuess").innerHTML = state.guessedWord
+
     document.getElementById("lives").innerHTML = `lives : ${state.lives}`
+    const letters = document.querySelectorAll(".letter") ?? null
+    console.log("letters", letters)
+    if(!letters) return
+    for (const i in letters) {
+        const letter = letters[i]
+        if(letter === letters.length) continue
+        console.log("letter", letter)
+
+        letter.innerHTML = state.guessedWord[i]
+    }
 }
 
 /**
